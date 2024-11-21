@@ -20,7 +20,7 @@ namespace ToDoListApp
                         AddTask();
                         break;
                     case "2":
-                        Console.WriteLine("Эта функция в разработке.");
+                        RemoveTask();
                         break;
                     case "3":
                         ViewTasks();
@@ -41,7 +41,20 @@ namespace ToDoListApp
             tasks.Add(task);
             Console.WriteLine("Задача добавлена!");
         }
-
+        static void RemoveTask()
+        {
+            ViewTasks();
+            Console.WriteLine("Введите номер задачи для удаления:");
+            if (int.TryParse(Console.ReadLine(), out int index) && index > 0 && index <= tasks.Count)
+            {
+                tasks.RemoveAt(index - 1);
+                Console.WriteLine("Задача удалена.");
+            }
+            else
+            {
+                Console.WriteLine("Некорректный номер задачи.");
+            }
+        }
         static void ViewTasks()
         {
             Console.WriteLine("Список задач:");
